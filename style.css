@@ -1,0 +1,107 @@
+body {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body, input, select, button {
+  font-family: Open Sans, sans-serif;
+  font-size: 13px;
+}
+
+/*
+hr {
+  border: none;
+  border-top: 1px solid rgb(200, 200, 200);
+}
+*/
+
+#controlContainer {
+  position: absolute;
+  width: 292px;
+}
+
+#newDesignControls, #storageControls, #resetControl, #boxSizeControl,
+#colorControl {
+  padding: 5px;
+  margin-bottom: 10px;
+  background: rgb(245, 245, 245);
+  border: 1px solid rgb(200, 200, 200);
+}
+
+#newDesignControls {
+  border: 1px solid rgb(245, 245, 245);
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px 1px rgb(0, 145, 255);
+}
+
+#designName {
+  padding-left: 3px;
+}
+
+#designSelector {
+  visibility: hidden;
+}
+
+#colorControl {
+  margin-bottom: 0px;
+  line-height: 0px;
+}
+
+#currentColor {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-right: 2px;
+  border: 2px solid white;
+  outline: 1px solid rgb(150, 150, 150);
+  background: rgb(200, 200, 200);
+}
+
+.colorBoxCol {
+  display: inline-block;
+}
+
+.colorBoxCol:not(:last-child) {
+  margin-right: 1px;
+}
+
+.colorBox {
+  width: 15px;
+  height: 15px;
+  border: 1px solid white;
+  outline: 1px solid rgb(150, 150, 150);
+  opacity: 0.8;
+}
+
+.colorBox:first-of-type {
+  margin-bottom: 4px;
+}
+
+.colorBox:hover {
+  outline-color: rgb(0, 130, 230);
+}
+
+#outerBoxContainer {
+  position: relative;
+  left: 305px;
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgb(200, 200, 200);
+  background: rgb(245, 245, 245);
+  overflow: auto;
+}
+
+.boxCol {
+  float: left;
+}
+
+.box {
+  width: 40px;
+  height: 40px;
+  margin: 1px 0px 0px 1px;
+  background-color: rgb(200, 200, 200);
+  opacity: 0.8;
+}

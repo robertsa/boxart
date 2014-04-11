@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Box Art</title>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans"
+          rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    
+    <div id="controlContainer">
+      
+      <div id="newDesignControls">
+        <div id="boxRowControl">
+          <span>Box Rows:</span>
+          <span id="boxRowVal">10</span>
+          <br>
+          <input id="boxRowRange" type="range" value="10" min="1" max="50">
+        </div>
+        <div id="boxColControl">
+          <span>Box Columns:</span>
+          <span id="boxColVal">10</span>
+          <br>
+          <input id="boxColRange" type="range" value="10" min="1" max="50">
+        </div>
+        <button id="createNewDesignButton">Create New Design</button>
+      </div>
+      
+      <div id="storageControls">
+        <div id="saveControl">
+          <button id="saveDesignButton" disabled>Save Design</button>
+          <input id="designName" size="20" maxlength="20">
+        </div>
+        <div id="loadControl">
+          <button id="loadDesignButton" disabled>Load Design</button>
+          <select id="designSelector"></select>
+        </div>
+        <div id="deleteControl">
+          <button id="deleteDesignButton" disabled>Delete Design</button>
+          <br>
+          <button id="deleteAllDesignsButton" disabled>Delete All Designs</button>
+        </div>
+      </div>
+      
+      <!--<div id="resetControl">
+        <button id="resetButton">Reset Boxes</button>
+      </div>-->
+      
+      <div id="boxSizeControl">
+        <span>Box Size:</span>
+        <span id="boxSizeVal">40</span>
+        <br>
+        <input id="boxSizeRange" type="range" value="40"
+               min="10" max="100" step="2">
+      </div>
+      
+      <div id="colorControl">
+        <div id="currentColor"></div>
+        <div class="colorBoxCol">
+          <div class="colorBox"></div>
+          <div class="colorBox"></div>
+        </div>
+        <div class="colorBoxCol">
+          <div class="colorBox"></div>
+          <div class="colorBox"></div>
+        </div>
+        <div class="colorBoxCol">
+          <div class="colorBox"></div>
+          <div class="colorBox"></div>
+        </div>
+        <div class="colorBoxCol">
+          <div class="colorBox"></div>
+          <div class="colorBox"></div>
+        </div>
+        <div class="colorBoxCol">
+          <div class="colorBox"></div>
+          <div class="colorBox"></div>
+        </div>
+        <div class="colorBoxCol">
+          <div class="colorBox"></div>
+          <div class="colorBox"></div>
+        </div>
+        <div class="colorBoxCol">
+          <div class="colorBox"></div>
+          <div class="colorBox"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div id="outerBoxContainer">
+      <div id="boxContainer"></div>
+    </div>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
