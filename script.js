@@ -311,6 +311,10 @@ $(document).ready(function() {
     
   });
   
+  $("#clearBoxesButton").on("click", function() {
+    clearBoxes();
+  });
+  
   $(".colorBox").on("click", function() {
     color = $(this).css("background-color");
     $("#currentColor").css("background-color", color);

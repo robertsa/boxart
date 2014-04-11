@@ -23,7 +23,7 @@ hr {
   width: 292px;
 }
 
-#newDesignControls, #storageControls, #resetControl, #boxSizeControl,
+#newDesignControls, #storageControls, #clearBoxesControl, #boxSizeControl,
 #colorControl {
   padding: 5px;
   margin-bottom: 10px;
