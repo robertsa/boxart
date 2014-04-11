@@ -225,6 +225,16 @@ $(document).ready(function() {
     $("#boxColVal").text( $(this).val() );
   });
   
+  // Currently need this for IE
+  $("#boxRowRange").on("change", function() {
+    $("#boxRowVal").text( $(this).val() );
+  });
+  
+  // Currently need this for IE
+  $("#boxColRange").on("change", function() {
+    $("#boxColVal").text( $(this).val() );
+  });
+  
   // Create and place a new box container with the current
   // row and column settings
   // The default box size used here is 40
