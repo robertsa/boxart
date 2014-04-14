@@ -16,30 +16,35 @@
           <span>Box Rows:</span>
           <span id="boxRowVal">45</span>
           <br>
-          <input id="boxRowRange" type="range" value="45" min="1" max="45">
+          <input id="boxRowRange" type="range" value="45" min="1" max="45"
+                 autocomplete="off">
         </div>
         <div id="boxColControl">
           <span>Box Columns:</span>
           <span id="boxColVal">45</span>
           <br>
-          <input id="boxColRange" type="range" value="45" min="1" max="45">
+          <input id="boxColRange" type="range" value="45" min="1" max="45"
+                 autocomplete="off">
         </div>
         <button id="createNewDesignButton">Create New Design</button>
       </div>
       
       <div id="storageControls">
         <div id="saveControl">
-          <button id="saveDesignButton" disabled>Save Design</button>
-          <input id="designName" size="20" maxlength="20">
+          <button id="saveDesignButton" autocomplete="off"
+                  disabled>Save Design</button>
+          <input id="designName" size="20" maxlength="20" autocomplete="off">
         </div>
         <div id="loadControl">
           <button id="loadDesignButton" disabled>Load Design</button>
           <select id="designSelector"></select>
         </div>
         <div id="deleteControl">
-          <button id="deleteDesignButton" disabled>Delete Design</button>
+          <button id="deleteDesignButton" autocomplete="off"
+                  disabled>Delete Design</button>
           <br>
-          <button id="deleteAllDesignsButton" disabled>Delete All Designs</button>
+          <button id="deleteAllDesignsButton"
+                  disabled>Delete All Designs</button>
         </div>
       </div>
       
@@ -48,7 +53,7 @@
         <span id="boxSizeVal">16</span>
         <br>
         <input id="boxSizeRange" type="range" value="16"
-               min="8" max="16" step="2">
+               min="8" max="16" step="2" autocomplete="off">
       </div>
       
       <div id="marginControl">
