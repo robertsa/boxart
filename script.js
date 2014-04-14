@@ -101,7 +101,8 @@ function saveDesign() {
   for (var i = 0; i < $boxes.length; i++) {
     colors.push( $($boxes[i]).css("background-color") );
   }
-  design.name = designName;
+  design.name = designName.replace(/^\s*/, "");
+  design.name = design.name.replace(/\s+/g, " ");
   design.colors = colors;
   design.boxRows = $( $(".boxCol")[0] ).children().length;
   design.boxCols = $(".boxCol").length;
