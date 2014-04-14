@@ -79,6 +79,10 @@ function createBoxContainer(col, row, boxSize) {
   }
   $boxContainer.width(col * boxSize + col + 1 + "px");
   $boxContainer.height(row * boxSize + row + 1 + "px");
+  $boxContainer.find(".box").css({
+    width: boxSize + "px",
+    height: boxSize + "px"
+  });
   addBCEventListeners();
 }
 
@@ -99,8 +103,8 @@ function saveDesign() {
   }
   design.name = designName;
   design.colors = colors;
-  design.boxRows = $("#boxRowRange").val();
-  design.boxCols = $("#boxColRange").val();
+  design.boxRows = $( $(".boxCol")[0] ).children().length;
+  design.boxCols = $(".boxCol").length;
   design.boxSize = $(".box").css("width");
   // If the design is not already in local storage update the
   // design load elements for the new design
@@ -119,6 +123,7 @@ function saveDesign() {
   $("#deleteAllDesignsButton").prop("disabled", false);
 }
 
+// Load the selected design from local storage
 function loadDesign() {
   if (designToLoad === null) {
     console.log("Design is not set");
@@ -126,17 +131,13 @@ function loadDesign() {
     console.log("Design does not exist");
   } else {
     var design = JSON.parse(localStorage[designToLoad]);
-    var rows = parseInt(design.boxRows);
-    var cols = parseInt(design.boxCols);
+    var rows = design.boxRows;
+    var cols = design.boxCols;
     var boxSize = parseInt(design.boxSize);
     var $boxes;
     createBoxContainer(cols, rows, boxSize);
     placeBoxContainer();
     $boxes = $(".box");
-    $boxes.css({
-      width: boxSize,
-      height: boxSize
-    });
     for (var i = 0; i < $boxes.length; i++) {
       $( $boxes[i] ).css("background-color", design.colors[i]);
     }
@@ -190,12 +191,6 @@ function deleteAllDesigns() {
   clearBoxes();
 }
 
-// Reset the count, size, and background color of the boxes
-//function resetBoxes() {
-//  var $boxes = $(".box");
-//  $boxes.css("background-color", "rgb(200, 200, 200)");
-//}
-
 // Reset the background color of the boxes
 function clearBoxes() {
   var $boxes = $(".box");
@@ -210,7 +205,7 @@ $(document).ready(function() {
   }
   
   initColorBoxes();
-  createBoxContainer(10, 10, 40);
+  createBoxContainer(45, 45, 16);
   placeBoxContainer();
   
   $(document).on("mouseup", function() {
@@ -237,14 +232,12 @@ $(document).ready(function() {
   
   // Create and place a new box container with the current
   // row and column settings
-  // The default box size used here is 40
   $("#createNewDesignButton").on("click", function() {
     var rows = parseInt( $("#boxRowRange").val() );
     var cols = parseInt( $("#boxColRange").val() );
-    createBoxContainer(cols, rows, 40);
+    var size = parseInt( $("#boxSizeRange").val() );
+    createBoxContainer(cols, rows, size);
     placeBoxContainer();
-    $("#boxSizeRange").val(40);
-    $("#boxSizeVal").text("40");
   });
   
   $("#saveDesignButton").on("click", function() {
@@ -275,10 +268,6 @@ $(document).ready(function() {
   $("#deleteAllDesignsButton").on("click", function() {
     deleteAllDesigns();
   });
-  
-//  $("#resetButton").on("click", function() {
-//    resetBoxes();
-//  });
   
   $("#boxSizeRange").on("input", function() {
     $("#boxSizeVal").text( $(this).val() );
