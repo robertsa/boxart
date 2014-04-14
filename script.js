@@ -302,7 +302,7 @@ $(document).ready(function() {
   
   $("#toggleMarginButton").on("click", function() {
     var $boxes = $(".box");
-    if ($boxes.css("margin") !== "0px") {
+    if ($boxes.css("margin-top") === "1px") {
       $boxes.css("margin", "0px");
     } else {
       $boxes.css("margin", "1px 0px 0px 1px");
