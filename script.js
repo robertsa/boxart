@@ -281,7 +281,7 @@ $(document).ready(function() {
     var $bc = $("#boxContainer").detach();
     var $boxes = $bc.find(".box");
     var count = $bc.find(".boxCol").length;
-    var size = $bc.first(".boxCol").children().length;
+    var size = $( $bc.find(".boxCol")[0] ).children().length;
     var boxSize = $(this).val();
     var width = boxSize * count + count + 1;
     var height = boxSize * size + size + 1;
