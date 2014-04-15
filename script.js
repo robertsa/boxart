@@ -107,16 +107,31 @@ function saveDesign() {
   design.boxRows = $( $(".boxCol")[0] ).children().length;
   design.boxCols = $(".boxCol").length;
   design.boxSize = $(".box").css("width");
-  // If the design is not already in local storage update the
-  // design load elements for the new design
   if ( !(designName in localStorage) ) {
-    $("#designSelector").append( $("<option>" + designName + "</option>") );
-    // If this is the first saved design update the design to load
-    // and make visible the design selector and load button
+    // If the design is not already in local storage update the
+    // design load elements for the new design
+    var $ds = $("#designSelector");
+    var $newDesign = $("<option>" + designName + "</option>");
     if (localStorage.length === 0) {
-      designToLoad = $("#designSelector").val();
-      $("#designSelector").css("visibility", "visible");
+      // If this is the first saved design update the design to load
+      // and make visible the design selector and load button
+      $ds.append($newDesign);
+      designToLoad = $ds.val();
+      $ds.css("visibility", "visible");
       $("#loadDesignButton").prop("disabled", false);
+    } else {
+      // Sort new design name into option list
+      var $options = $ds.children();
+      var inserted = false;
+      for (var j = 0; j < $options.length; j++) {
+        var name = $( $options[j] ).text();
+        if (designName < name) {
+          $newDesign.insertBefore($options[j]);
+          inserted = true;
+          break;
+        }
+      }
+      if (!inserted) { $ds.append($newDesign); }
     }
   }
   localStorage[design.name] = JSON.stringify(design);
