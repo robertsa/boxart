@@ -23,8 +23,8 @@ hr {
   width: 292px;
 }
 
-#newDesignControls, #storageControls, #clearBoxesControl, #boxSizeControl,
-#marginControl, #colorControl {
+#newDesignControls, #storageControls, #boxSizeControl, #marginControl,
+#clearBoxesControl, #brightDarkButtonControl, #colorControl {
   padding: 5px;
   margin-bottom: 10px;
   background: rgb(245, 245, 245);

@@ -13,6 +13,12 @@ var color = "rgb(200, 200, 200)";
 // True while left mouse button is down after being pressed over a box
 var mouseDown = false;
 
+// Determines if brightening is enabled
+var brighten = false;
+
+// Determines if darkening is enabled
+var darken = false;
+
 // Populate and show certain design elements for a new session
 function initDesignElements() {
   var $ds = $("#designSelector");
@@ -27,7 +33,6 @@ function initDesignElements() {
 }
 
 // Assign colors to the color boxes
-// TODO: this should also generate the boxes
 function initColorBoxes() {
   var $cb = $(".colorBox");
   $( $cb[0] ).css("background-color", "rgb(220, 20, 60)");
@@ -56,17 +61,31 @@ function createBoxColumn(size) {
   $boxContainer.append($boxColumns);
 }
 
-// Add mouse event listeners to the box container object
+// Add mouse event listeners to the box container object for the boxes
 function addBCEventListeners() {
   $boxContainer.on("mousedown", ".box", function(event) {
     if (event.which === 1) {
+      var c = $(this).css("background-color");
+      if (brighten) {
+        $(this).css("background-color", brightenColor(c));
+      } else if (darken) {
+        $(this).css("background-color", darkenColor(c));
+      } else {
+        $(this).css("background-color", color);
+      }
       mouseDown = true;
-      $(this).css("background-color", color);
     }
   });
   $boxContainer.on("mouseenter", ".box", function() {
     if (mouseDown) {
-      $(this).css("background-color", color);
+      var c = $(this).css("background-color");
+      if (brighten) {
+        $(this).css("background-color", brightenColor(c));
+      } else if (darken) {
+        $(this).css("background-color", darkenColor(c));
+      } else {
+        $(this).css("background-color", color);
+      }
     }
   });
 }
@@ -213,7 +232,7 @@ function clearBoxes() {
   $boxes.css("background-color", "rgb(200, 200, 200)");
 }
 
-// Convert a RGB value to a HSL value
+// Convert RGB values into an array of HSL values
 function rgbToHsl(r, g, b) {
   r /= 255, g /= 255, b /= 255;
   var max = Math.max(r, g, b);
@@ -235,6 +254,24 @@ function rgbToHsl(r, g, b) {
   s = Math.round(s * 100);
   l = Math.round(l * 100);
   return [h, s, l];
+}
+
+// Return the given RGB string as a HSL string slightly brightened
+function brightenColor(color) {
+  var rgb = color.slice(4, -1).split(", ");
+  var r = rgb[0], g = rgb[1], b = rgb[2];
+  var hsl = rgbToHsl(r, g, b);
+  var h = hsl[0], s = hsl[1], l = hsl[2] + 5;
+  return "hsl(" + h + ", " + s + "%, " + l + "%)";
+}
+
+// Return the given RGB string as a HSL string slightly darkened
+function darkenColor(color) {
+  var rgb = color.slice(4, -1).split(", ");
+  var r = rgb[0], g = rgb[1], b = rgb[2];
+  var hsl = rgbToHsl(r, g, b);
+  var h = hsl[0], s = hsl[1], l = hsl[2] - 5;
+  return "hsl(" + h + ", " + s + "%, " + l + "%)";
 }
 
 $(document).ready(function() {
@@ -351,6 +388,30 @@ $(document).ready(function() {
   
   $("#clearBoxesButton").on("click", function() {
     clearBoxes();
+  });
+  
+  $("#brightenButton").on("click", function() {
+    if (!brighten) {
+      brighten = true;
+      darken = false;
+      $("#darkenButton").css("box-shadow", "none");
+      $(this).css("box-shadow", "0px 0px 2px 2px rgb(0, 145, 255)");
+    } else {
+      brighten = false;
+      $(this).css("box-shadow", "none");
+    }
+  });
+  
+  $("#darkenButton").on("click", function() {
+    if (!darken) {
+      darken = true;
+      brighten = false;
+      $("#brightenButton").css("box-shadow", "none");
+      $(this).css("box-shadow", "0px 0px 2px 2px rgb(0, 145, 255)");
+    } else {
+      darken = false;
+      $(this).css("box-shadow", "none");
+    }
   });
   
   $(".colorBox").on("click", function() {
