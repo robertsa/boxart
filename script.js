@@ -261,9 +261,8 @@ function brightenColor(color) {
   var rgb = color.slice(4, -1).split(", ");
   var r = rgb[0], g = rgb[1], b = rgb[2];
   var hsl = rgbToHsl(r, g, b);
-  var h = hsl[0], s = hsl[1];
-  var l = hsl[2];
-  if (l + 5 < 255) {
+  var h = hsl[0], s = hsl[1], l = hsl[2];
+  if (l + 5 < 100) {
     l += 5;
   }
   return "hsl(" + h + ", " + s + "%, " + l + "%)";
@@ -274,8 +273,7 @@ function darkenColor(color) {
   var rgb = color.slice(4, -1).split(", ");
   var r = rgb[0], g = rgb[1], b = rgb[2];
   var hsl = rgbToHsl(r, g, b);
-  var h = hsl[0], s = hsl[1];
-  var l = hsl[2];
+  var h = hsl[0], s = hsl[1], l = hsl[2];
   if (l - 5 > 0) {
     l -= 5;
   }
