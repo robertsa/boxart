@@ -400,11 +400,11 @@ $(document).ready(function() {
     if (!brighten) {
       brighten = true;
       darken = false;
-      $("#darkenButton").css("box-shadow", "none");
-      $(this).css("box-shadow", "0px 0px 2px 2px rgb(0, 145, 255)");
+      $("#darkenButton").css("color", "black");
+      $(this).css("color", "rgb(0, 145, 255)");
     } else {
       brighten = false;
-      $(this).css("box-shadow", "none");
+      $(this).css("color", "black");
     }
   });
   
@@ -412,11 +412,11 @@ $(document).ready(function() {
     if (!darken) {
       darken = true;
       brighten = false;
-      $("#brightenButton").css("box-shadow", "none");
-      $(this).css("box-shadow", "0px 0px 2px 2px rgb(0, 145, 255)");
+      $("#brightenButton").css("color", "black");
+      $(this).css("color", "rgb(0, 145, 255)");
     } else {
       darken = false;
-      $(this).css("box-shadow", "none");
+      $(this).css("color", "black");
     }
   });
   
